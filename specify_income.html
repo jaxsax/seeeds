@@ -78,20 +78,23 @@
     </main>
 
     <script>
-        function getBothIncomes() {
+        function persistIncomeToStorage() {
             let youIncome = document.getElementById('fixed-income-monthly-you').value;
             let spouseIncome = document.getElementById('fixed-income-monthly-spouse').value;
 
-            return { 'youIncome': youIncome, 'spouseIncome': spouseIncome };
+            localStorage.setItem('youIncome', youIncome);
+            localStorage.setItem('spouseIncome', spouseIncome);
         }
 
         document.getElementById('childPlanningButton').addEventListener('click', () => {
-            fixed_income = getBothIncomes();
-            window.location = `child_planning.html?you_income=${fixed_income.youIncome}&spouse_income=${fixed_income.spouseIncome}`;
+            persistIncomeToStorage();
+
+            window.location = `child_planning.html`;
         });
         document.getElementById('homeLoansButton').addEventListener('click', () => {
-            fixed_income = getBothIncomes();
-            window.location = `home_loans.html?you_income=${fixed_income.youIncome}&spouse_income=${fixed_income.spouseIncome}`;
+            persistIncomeToStorage();
+
+            window.location = `home_loans.html`;
         });
     </script>
 </body>
