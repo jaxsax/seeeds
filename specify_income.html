@@ -7,17 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Income</title>
 
-    <link rel="stylesheet" href="base.css"/>
+    <link rel="stylesheet" href="semantic.css" />
+    <link rel="stylesheet" href="base.css" />
     <style>
-        .incomeContainer {
-            width:80%;
-            margin: 0 auto;
-        }
-
-        #incomePerAnnum {
-            width: 100%;
-        }
-
         .boxes {
             margin-top: 12px;
         }
@@ -27,59 +19,81 @@
             padding: 8px 16px;
             text-transform: uppercase;
         }
+
+        .applicant {
+            margin-top: 1em;
+            background: red;
+        }
+
+        .f1 { margin-top: 1.5em; }
     </style>
 </head>
 
 <body>
-<nav id="mainNav">
-    <ul id="navContainer">
-        <li>
-            <a href="specify_income.html">Income</a>
-        </li>
-        <li>
-            <a href="child_planning.html">Child Planning</a>
-        </li>
-        <li>
-            <a href="home_loans.html">Home loans</a>
-        </li>
-        <li>
-            <a href="summary.html">Summary</a>
-        </li>
-    </ul>
-</nav>
-<main>
-    <div id="content" class="bg">
-        <div class="center">
-            <form id="f" action="#">
-                <div class="incomeContainer">
-                    <label for="incomePerAnnum">
-                        <input id="incomePerAnnum"
-                               type="number"
-                               placeholder="Income per annum"/>
-                    </label>
+    <nav id="mainNav">
+        <ul id="navContainer">
+            <li>
+                <a href="specify_income.html">Income</a>
+            </li>
+            <li>
+                <a href="child_planning.html">Child Planning</a>
+            </li>
+            <li>
+                <a href="home_loans.html">Home loans</a>
+            </li>
+            <li>
+                <a href="summary.html">Summary</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <div id="content">
+            <div class="content ui one column grid container">
+                <div class="column ui raised very padded text container segment f1">
+                    <h1 class="ui header">You</h1>
+                    <form action="#" class="ui form">
+                        <div class="field">
+                            <label>Fixed monthly income</label>
+                            <input type="text" name="fixed-income-monthly-you" id="fixed-income-monthly-you"
+                                placeholder="$ 1000">
+                        </div>
+                    </form>
                 </div>
-                <div class="boxes">
-                    <button id="childPlanningButton" class = "income_btn">
-                        Child planning
-                    </button>
-                    <button id="homeLoansButton" class="income_btn">
-                        Home loans
-                    </button>
+                <div class="column ui raised very padded text container segment">
+                    <h1 class="ui header">Spouse</h1>
+                    <form action="#" class="ui form">
+                        <div class="field">
+                            <label>Fixed monthly income</label>
+                            <input type="text" id="fixed-income-monthly-spouse" name="fixed-income-monthly" placeholder="$ 1000">
+                        </div>
+                    </form>
                 </div>
-        </div>
-        </form>
-    </div>
-</main>
 
-<script>
-    document.getElementById('childPlanningButton').addEventListener('click', () => {
-        let input = document.getElementById('incomePerAnnum')
-        console.log(`input=${input.value}`)
-    });
-    document.getElementById('homeLoansButton').addEventListener('click', () => {
-        window.location = "home_loans.html";
-    });
-</script>
+                <div class="column ui container center">
+                    <button class="ui button" id="childPlanningButton">Proceed to child planning</button>
+                    <button class="ui button" id="homeLoansButton">Proceed to home loans planning</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function getBothIncomes() {
+            let youIncome = document.getElementById('fixed-income-monthly-you').value;
+            let spouseIncome = document.getElementById('fixed-income-monthly-spouse').value;
+
+            return { 'youIncome': youIncome, 'spouseIncome': spouseIncome };
+        }
+
+        document.getElementById('childPlanningButton').addEventListener('click', () => {
+            fixed_income = getBothIncomes();
+            window.location = `child_planning.html?you_income=${fixed_income.youIncome}&spouse_income=${fixed_income.spouseIncome}`;
+        });
+        document.getElementById('homeLoansButton').addEventListener('click', () => {
+            fixed_income = getBothIncomes();
+            window.location = `home_loans.html?you_income=${fixed_income.youIncome}&spouse_income=${fixed_income.spouseIncome}`;
+        });
+    </script>
 </body>
 
 </html>
