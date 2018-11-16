@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="base.css" />
+    <style>
+        .incomeContainer {
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        #incomePerAnnum {
+            width: 100%;
+        }
+
+        .boxes { margin-top: 12px; }
+        .boxes button {
+            padding: 24px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="mainNav">
+        <ul id="navContainer">
+            <li>
+                <a href="specify_income.html">Income</a>
+            </li>
+            <li>Child planning</li>
+            <li>
+                <a href="home_loans.html">Home loans</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <div id="content">
+            <form id="f" action="#">
+                <div class="incomeContainer">
+                    <label for="incomePerAnnum">
+                        <input id="incomePerAnnum"
+                            type="number"
+                            placeholder="Income per annum" />
+                    </label>
+                </div>
+                <div class="boxes">
+                    <button id="childPlanningButton">
+                        Child planning
+                    </button>
+                    <button id="homeLoansButton">
+                        Home loans
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('childPlanningButton').addEventListener('click', () => {
+            let input = document.getElementById('incomePerAnnum')
+            console.log(`input=${input.value}`)
+        });
+        document.getElementById('homeLoansButton').addEventListener('click', () => {
+            window.location = "home_loans.html";
+        });
+    </script>
+</body>
+
+</html>

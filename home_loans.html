@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="base.css" />
+    <style>
+        .incomeContainer {
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        #incomePerAnnum {
+            width: 100%;
+        }
+
+        .boxes { margin-top: 12px; }
+        .boxes button {
+            padding: 24px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="mainNav">
+        <ul id="navContainer">
+            <li>
+                <a href="specify_income.html">Income</a>
+            </li>
+            <li>Child planning</li>
+            <li>
+                <a href="home_loans.html">Home loans</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <form id="f">
+            <div>
+                FFFFFFFFFFFFFF: <span id="abc"></span>
+            </div>
+            <label for="costOfHome">
+                <span>Cost of home</span>
+                <input type="text" />
+            </label>
+        </form>
+    </main>
+    <script>
+        let url = new URL(window.location);
+        let income = url.searchParams.get('income');
+        document.getElementById('abc').textContent = income;
+    </script>
+</body>
+
+</html>
