@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Income</title>
 
-    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="base.css"/>
     <style>
         .incomeContainer {
-            width: 60%;
+            width:80%;
             margin: 0 auto;
         }
 
@@ -18,60 +18,68 @@
             width: 100%;
         }
 
-        .boxes { margin-top: 12px; }
+        .boxes {
+            margin-top: 12px;
+        }
+
         .boxes button {
-            padding: 24px;
+            margin: 5px 20px;
+            padding: 8px 16px;
             text-transform: uppercase;
         }
     </style>
 </head>
 
 <body>
-    <nav id="mainNav">
-        <ul id="navContainer">
-            <li>
-                <a href="specify_income.html">Income</a>
-            </li>
-            <li>Child planning</li>
-            <li>
-                <a href="home_loans.html">Home loans</a>
-            </li>
-            <li>
-                <a href="summary.html">Summary</a>
-            </li>
-        </ul>
-    </nav>
-    <main>
-        <div id="content">
+<nav id="mainNav">
+    <ul id="navContainer">
+        <li>
+            <a href="specify_income.html">Income</a>
+        </li>
+        <li>
+            <a href="child_planning.html">Child Planning</a>
+        </li>
+        <li>
+            <a href="home_loans.html">Home loans</a>
+        </li>
+        <li>
+            <a href="summary.html">Summary</a>
+        </li>
+    </ul>
+</nav>
+<main>
+    <div id="content" class="bg">
+        <div class="center">
             <form id="f" action="#">
                 <div class="incomeContainer">
                     <label for="incomePerAnnum">
                         <input id="incomePerAnnum"
-                            type="number"
-                            placeholder="Income per annum" />
+                               type="number"
+                               placeholder="Income per annum"/>
                     </label>
                 </div>
                 <div class="boxes">
-                    <button id="childPlanningButton">
+                    <button id="childPlanningButton" class = "income_btn">
                         Child planning
                     </button>
-                    <button id="homeLoansButton">
+                    <button id="homeLoansButton" class="income_btn">
                         Home loans
                     </button>
                 </div>
-            </form>
         </div>
-    </main>
+        </form>
+    </div>
+</main>
 
-    <script>
-        document.getElementById('childPlanningButton').addEventListener('click', () => {
-            let input = document.getElementById('incomePerAnnum')
-            console.log(`input=${input.value}`)
-        });
-        document.getElementById('homeLoansButton').addEventListener('click', () => {
-            window.location = "home_loans.html";
-        });
-    </script>
+<script>
+    document.getElementById('childPlanningButton').addEventListener('click', () => {
+        let input = document.getElementById('incomePerAnnum')
+        console.log(`input=${input.value}`)
+    });
+    document.getElementById('homeLoansButton').addEventListener('click', () => {
+        window.location = "home_loans.html";
+    });
+</script>
 </body>
 
 </html>
