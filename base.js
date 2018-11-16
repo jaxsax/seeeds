@@ -25,6 +25,7 @@ function getTotal() {
 }
 
 function childExpenseCal() {
+    var totalIncome = localStorage.getItem('totalIncome')
     var noOfKids = getNumOfKids()
     localStorage.setItem('noOfKids', noOfKids)
     document.getElementById('insuranceExpense').value = noOfKids * 150
@@ -35,18 +36,22 @@ function childExpenseCal() {
     localStorage.setItem('schoolExpenseKid', noOfKids * 350)
     localStorage.setItem('foodExpenseKid', noOfKids * 300)
     localStorage.setItem('totalExpenseKid', noOfKids * 800)
-    document.getElementById('expectedExpenseOverIncome').innerText = "Total child expenses takes up around " + Number(document.getElementById('totalExpenseKid').value) / 10000 * 100 + "% of your total income (" + 10000 + "SGD)"
+    var percentageOfIncome = Number(document.getElementById('totalExpenseKid').value) / Math.round(Number(totalIncome)) * 100
+    document.getElementById('expectedExpenseOverIncome').innerText = "Total child expenses takes up around " + percentageOfIncome + "% of your total income (" + Number(totalIncome) + "SGD)"
     drawChart1()
     drawChart2()
 }
 
 function logChildExpense() {
+    var totalIncome = localStorage.getItem('totalIncome')
+
     localStorage.setItem('insuranceExpenseKid', document.getElementById('insuranceExpense').value)
     localStorage.setItem('schoolExpenseKid', document.getElementById('schoolExpense').value)
     localStorage.setItem('foodExpenseKid', document.getElementById('foodExpense').value)
     document.getElementById('totalExpenseKid').value = Number(document.getElementById('insuranceExpense').value) + Number(document.getElementById('schoolExpense').value) + Number(document.getElementById('foodExpense').value)
     localStorage.setItem('totalExpenseKid', document.getElementById('totalExpenseKid').value)
-    document.getElementById('expectedExpenseOverIncome').innerText = "Total child expenses takes up around " + Number(document.getElementById('totalExpenseKid').value) / 10000 * 100 + "% of your total income (" + 10000 + "SGD)"
+    var percentageOfIncome = Number(document.getElementById('totalExpenseKid').value) / Math.round(Number(totalIncome)) * 100
+    document.getElementById('expectedExpenseOverIncome').innerText = "Total child expenses takes up around " + percentageOfIncome + "% of your total income (" + Number(totalIncome) + "SGD)"
     drawChart1()
     drawChart2()
 }
@@ -83,10 +88,11 @@ function drawChart2() {
 
 // Draw the chart and set the chart values
     function drawChart() {
+        var totalIncome = localStorage.getItem('totalIncome')
         var data = google.visualization.arrayToDataTable([
             ['Category', 'SGD'],
             ['Total Expense on Children', Number(localStorage.getItem('totalExpenseKid'))],
-            ['Total Monthly Savings', 10000-Number(localStorage.getItem('totalExpenseKid'))],
+            ['Total Monthly Savings', totalIncome - Number(localStorage.getItem('totalExpenseKid'))],
         ]);
 
         // Optional; add a title and set the width and height of the chart
