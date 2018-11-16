@@ -1,10 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Summary</title>
-</head>
-<body>
 
+    <link rel="stylesheet" href="base.css"/>
+    <style>
+        .incomeContainer {
+            width:80%;
+            margin: 0 auto;
+        }
+
+        #incomePerAnnum {
+            width: 100%;
+        }
+
+        .boxes {
+            margin-top: 12px;
+        }
+
+        .boxes button {
+            margin: 5px 20px;
+            padding: 8px 16px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+<nav id="mainNav">
+    <ul id="navContainer">
+        <li>
+            <a href="specify_income.html">Income</a>
+        </li>
+        <li>
+            <a href="child_planning.html">Child Planning</a>
+        </li>
+        <li>
+            <a href="home_loans.html">Home loans</a>
+        </li>
+        <li>
+            <a href="summary.html">Summary</a>
+        </li>
+    </ul>
+</nav>
+<main>
+    <div id="content" class="bg">
+        <div class="center">
+                <h2 style="color:white">Summary</h2>
+                <table style="border:2px solid black; background-color:aliceblue; width:75%;">
+                    <tr>
+                        <td colspan="2" style="border:1px solid black"><strong>Spouse 1 Information</strong></td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black">Yearly Salary</td>
+                        <td style="border:1px solid black">$36,000</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border:1px solid black"><strong>Spouse 2 Information</strong></td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black">Yearly Salary</td>
+                        <td style="border:1px solid black">$42,000</td>
+                    </tr>
+                </table>
+                <table style="border:2px solid black; background-color:aliceblue; width:75%;">
+                    <tr>
+                        <td colspan="2" style="border:1px solid black"><strong>Home Loan Information</strong></td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black">% Both Salary</td>
+                        <td style="border:1px solid black">19% [$1234]</td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black">No. Years to Return</td>
+                        <td style="border:1px solid black">21</td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black">Total</td>
+                        <td style="border:1px solid black">$25,914</td>
+                    </tr>
+                </table>
+                <table style="border:2px solid black; background-color:aliceblue; width:75%;">
+                    <tr>
+                        <td colspan="4">
+                            <!--Pie Chart here-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="border:1px solid black"><strong>Child Planning Information</strong></td>
+                    </tr>
+                    <tr style="border:1px solid black">
+                        <td>General</td>
+                        <td>$18392</td>
+                        <td>x 2 children</td>
+                        <td>$26484</td>
+                    </tr>
+                    <tr style="border:1px solid black">
+                        <td>Insurance</td>
+                        <td>$2892</td>
+                        <td>x 2 children</td>
+                        <td>$3784</td>
+                    </tr>
+                    <tr style="border:1px solid black">
+                        <td>Investment</td>
+                        <td>$500</td>
+                        <td></td>
+                        <td>-$500</td>
+                    </tr>
+                    <tr style="border:1px solid black">
+                        <td>Total</td>
+                        <td></td>
+                        <td></td>
+                        <td>$6392</td>
+                    </tr>
+                </table>
+                <div class="boxes">
+                <button class = "income_btn">Sign Up with DBS</button>
+                <button class = "income_btn">See Loan Recommendations</button>
+                </div>
+            </span>
+        </div>
+    </div>
+</main>
+
+<script>
+    document.getElementById('childPlanningButton').addEventListener('click', () => {
+        let input = document.getElementById('incomePerAnnum')
+        console.log(`input=${input.value}`)
+    });
+    document.getElementById('homeLoansButton').addEventListener('click', () => {
+        window.location = "home_loans.html";
+    });
+</script>
 </body>
+
 </html>
