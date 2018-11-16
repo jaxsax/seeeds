@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Summary</title>
 
+    <link rel="stylesheet" href="semantic.css"/>
     <link rel="stylesheet" href="base.css"/>
     <style>
         .incomeContainer {
@@ -51,67 +52,67 @@
     <div id="content" class="bg">
         <div class="center">
                 <h2 style="color:white">Summary</h2>
-                <table style="border:2px solid black; background-color:aliceblue; width:75%;">
+                <table class="ui celled table" style="width:75%;">
                     <tr>
-                        <td colspan="2" style="border:1px solid black"><strong>Your Information</strong></td>
+                        <td colspan="2"><strong>Your Information</strong></td>
                     </tr>
                     <tr>
-                        <td style="border:1px solid black">Monthly Income</td>
-                        <td id="yourSalary" style="border:1px solid black">$36,000</td>
+                        <td>Monthly Income</td>
+                        <td id="yourSalary">$36,000</td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="border:1px solid black"><strong>Spouse Information</strong></td>
+                        <td colspan="2"><strong>Spouse Information</strong></td>
                     </tr>
                     <tr>
-                        <td style="border:1px solid black">Monthly Income</td>
-                        <td id="spouseSalary" style="border:1px solid black">$42,000</td>
-                    </tr>
-                </table>
-                <table style="border:2px solid black; background-color:aliceblue; width:75%;">
-                    <tr>
-                        <td colspan="2" style="border:1px solid black"><strong>Home Loan Information</strong></td>
-                    </tr>
-                    <tr>
-                        <td style="border:1px solid black">% Both Salary</td>
-                        <td id="loanSalaryPercentage" style="border:1px solid black">19% [$1234]</td>
-                    </tr>
-                    <tr>
-                        <td style="border:1px solid black">No. Years to Return</td>
-                        <td id="NumYearsToReturn" style="border:1px solid black">21</td>
-                    </tr>
-                    <tr>
-                        <td style="border:1px solid black">Total</td>
-                        <td id="totalLoan" style="border:1px solid black">$25,914</td>
+                        <td>Monthly Income</td>
+                        <td id="spouseSalary">$42,000</td>
                     </tr>
                 </table>
-                <table style="border:2px solid black; background-color:aliceblue; width:75%;">
+                <table class="ui celled table" style="width:75%;">
+                    <tr>
+                        <td colspan="2"><strong>Home Loan Information</strong></td>
+                    </tr>
+                    <tr>
+                        <td>% Both Salary</td>
+                        <td id="loanSalaryPercentage">19% [$1234]</td>
+                    </tr>
+                    <tr>
+                        <td>No. Years to Return</td>
+                        <td id="NumYearsToReturn">21</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td id="totalLoan">$25,914</td>
+                    </tr>
+                </table>
+                <table class="ui celled table" style="width:75%;">
                     <tr>
                         <td colspan="4">
                             <center><div id="piechart"></div></center>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4" style="border:1px solid black"><strong>Child Planning Information</strong></td>
+                        <td colspan="4"><strong>Child Planning Information</strong></td>
                     </tr>
-                    <tr style="border:1px solid black">
+                    <tr >
                         <td>General</td>
                         <td id="childGeneralExpenses">$18392</td>
                         <td>x <span id="NumChildren1">2</span> children</td>
                         <td id="totalChildGeneralExpenses">$26484</td>
                     </tr>
-                    <tr style="border:1px solid black">
+                    <tr>
                         <td>Insurance</td>
                         <td id="childInsurance">$2892</td>
                         <td>x <span id="NumChildren2">2</span> children</td>
                         <td id="totalChildInsurance">$3784</td>
                     </tr>
-                    <tr style="border:1px solid black">
+                    <tr>
                         <td>Investment</td>
                         <td id="investmentReturns">$500</td>
                         <td></td>
                         <td id="totalInvestmentReturns">-$500</td>
                     </tr>
-                    <tr style="border:1px solid black">
+                    <tr>
                         <td>Total</td>
                         <td></td>
                         <td></td>
@@ -119,10 +120,9 @@
                     </tr>
                 </table>
                 <div class="boxes">
-                <button id="signup" class = "income_btn">Sign Up with DBS</button>
-                <button id="seeloan" class = "income_btn">See Loan Recommendations</button>
+                    <button id="signup" class = "income_btn">Sign Up with DBS</button>
+                    <button id="seeloan" class = "income_btn">See Loan Recommendations</button>
                 </div>
-            </span>
         </div>
     </div>
 </main>
@@ -130,37 +130,38 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                 
 <script type="text/javascript">
+    // Load google charts
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
+    // Draw the chart and set the chart values
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Home Planner', 'Monthly'],
+        ['House Loan', 8],
+        ['Child Education', 2],
+        ['Child Food', 4],
+        ['Child Insurance', 4],
+        ['Spendings', 2],
+        ['Saving', 8]
+        ]);
 
-// Load google charts
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+        // Optional; add a title and set the width and height of the chart
+        var options = {'title':'Home Planner', 'width':900, 'height':400};
 
-// Draw the chart and set the chart values
-function drawChart() {
-  var data = google.visualization.arrayToDataTable([
-  ['Home Planner', 'Monthly'],
-  ['House Loan', 8],
-  ['Child Education', 2],
-  ['Child Food', 4],
-  ['Child Insurance', 4],
-  ['Spendings', 2],
-  ['Saving', 8]
-]);
-
-  // Optional; add a title and set the width and height of the chart
-  var options = {'title':'Home Planner', 'width':100, 'height':400};
-
-  // Display the chart inside the <div> element with id="piechart"
-  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-  chart.draw(data, options);
-  }
+        // Display the chart inside the <div> element with id="piechart"
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+    }
     document.getElementById('signup').addEventListener('click', () => {
         window.location = "https://internet-banking.dbs.com.sg/ibAPL/Welcome";
     });
     document.getElementById('seeloan').addEventListener('click', () => {
         window.location = "https://internet-banking.dbs.com.sg/DBSObWeb/processpweb.htm?pid=sg-dbs-pweb-promopersonal-loans-ntuc-vouchers-btnapplyonlinenow";
     });
+
+    document.getElementById('yourSalary').innerText = "$" + localStorage.getItem("youIncome");
+    document.getElementById('spouseSalary').innerText = "$" + localStorage.getItem("spouseIncome");
 </script>
 </body>
 
