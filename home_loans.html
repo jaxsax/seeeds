@@ -26,6 +26,7 @@
         }
 
         .f1 { margin-top: 1.5em; }
+        .suitable-loans-button { margin-top: 1.25em; text-align: right; }
     </style>
 </head>
 
@@ -48,7 +49,7 @@
     </nav>
     <main>
         <div id="content">
-            <div class="content ui one column grid container">
+            <div class="content ui three column grid container">
                 <div class="column ui raised very padded text container segment f1">
                     <h1 class="ui header">You</h1>
                     <form action="#" class="ui form">
@@ -108,9 +109,18 @@
                             <input type="number" name="housing-purchase-cost" id="housing-purchase-cost" />
                         </div>
                     </form>
-                </div>
-                <div class="column ui container center">
-                    <button class="ui button">Find suitable loans</button>
+                    <div class="suitable-loans-button">
+                        <button class="ui button" id="calculate-loan-period-button">Calculate loan period</button>
+                    </div>
+                    <h1 class="ui header">Loan repayment period</h1>
+                    <div>
+                        <span>$ per month:</span>
+                        <p id="repayment-per-month-wrapper"><span>$ </span><span id="repayment-per-month"></span></p>
+                    </div>
+                    <div>
+                        <span>Repayment period:</span>
+                        <p id="repayment-period">25 years</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -120,8 +130,26 @@
         let youFixedIncome = localStorage.getItem('youIncome');
         let spouseFixedIncome = localStorage.getItem('spouseIncome');
 
+        function getIncome(fixed, other, person) {
+            let fixedIncome = document.getElementById(`${fixed}-${person}`).value;
+            let otherIncome = document.getElementById(`${other}-${person}`).value;
+
+            return [ fixedIncome, otherIncome ];
+        }
+
         document.getElementById('fixed-income-monthly-you').value = youFixedIncome;
         document.getElementById('fixed-income-monthly-spouse').value = spouseFixedIncome;
+
+        document.getElementById('calculate-loan-period-button').addEventListener('click', () => {
+            let yourIncome = getIncome('fixed-income-monthly', 'other-income-monthly', 'you');
+            let spouse = getIncome('fixed-income-monthly', 'other-income-monthly', 'spouse');
+            let propertyPrice = document.getElementById('housing-purchase-cost').value;
+
+            let repaymentPerMonth = 1496511;
+
+            document.getElementById('repayment-per-month').textContent = repaymentPerMonth;
+            console.log(repaymentPerMonth);
+        });
     </script>
 </body>
 
