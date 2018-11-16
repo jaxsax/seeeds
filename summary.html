@@ -53,18 +53,18 @@
                 <h2 style="color:white">Summary</h2>
                 <table style="border:2px solid black; background-color:aliceblue; width:75%;">
                     <tr>
-                        <td colspan="2" style="border:1px solid black"><strong>Spouse 1 Information</strong></td>
+                        <td colspan="2" style="border:1px solid black"><strong>Your Information</strong></td>
                     </tr>
                     <tr>
-                        <td style="border:1px solid black">Yearly Salary</td>
-                        <td style="border:1px solid black">$36,000</td>
+                        <td style="border:1px solid black">Monthly Income</td>
+                        <td id="yourSalary" style="border:1px solid black">$36,000</td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="border:1px solid black"><strong>Spouse 2 Information</strong></td>
+                        <td colspan="2" style="border:1px solid black"><strong>Spouse Information</strong></td>
                     </tr>
                     <tr>
-                        <td style="border:1px solid black">Yearly Salary</td>
-                        <td style="border:1px solid black">$42,000</td>
+                        <td style="border:1px solid black">Monthly Income</td>
+                        <td id="spouseSalary" style="border:1px solid black">$42,000</td>
                     </tr>
                 </table>
                 <table style="border:2px solid black; background-color:aliceblue; width:75%;">
@@ -73,15 +73,15 @@
                     </tr>
                     <tr>
                         <td style="border:1px solid black">% Both Salary</td>
-                        <td style="border:1px solid black">19% [$1234]</td>
+                        <td id="loanSalaryPercentage" style="border:1px solid black">19% [$1234]</td>
                     </tr>
                     <tr>
                         <td style="border:1px solid black">No. Years to Return</td>
-                        <td style="border:1px solid black">21</td>
+                        <td id="NumYearsToReturn" style="border:1px solid black">21</td>
                     </tr>
                     <tr>
                         <td style="border:1px solid black">Total</td>
-                        <td style="border:1px solid black">$25,914</td>
+                        <td id="totalLoan" style="border:1px solid black">$25,914</td>
                     </tr>
                 </table>
                 <table style="border:2px solid black; background-color:aliceblue; width:75%;">
@@ -95,32 +95,32 @@
                     </tr>
                     <tr style="border:1px solid black">
                         <td>General</td>
-                        <td>$18392</td>
-                        <td>x 2 children</td>
-                        <td>$26484</td>
+                        <td id="childGeneralExpenses">$18392</td>
+                        <td>x <span id="NumChildren1">2</span> children</td>
+                        <td id="totalChildGeneralExpenses">$26484</td>
                     </tr>
                     <tr style="border:1px solid black">
                         <td>Insurance</td>
-                        <td>$2892</td>
-                        <td>x 2 children</td>
-                        <td>$3784</td>
+                        <td id="childInsurance">$2892</td>
+                        <td>x <span id="NumChildren2">2</span> children</td>
+                        <td id="totalChildInsurance">$3784</td>
                     </tr>
                     <tr style="border:1px solid black">
                         <td>Investment</td>
-                        <td>$500</td>
+                        <td id="investmentReturns">$500</td>
                         <td></td>
-                        <td>-$500</td>
+                        <td id="totalInvestmentReturns">-$500</td>
                     </tr>
                     <tr style="border:1px solid black">
                         <td>Total</td>
                         <td></td>
                         <td></td>
-                        <td>$6392</td>
+                        <td id="totalChildExpenses">$6392</td>
                     </tr>
                 </table>
                 <div class="boxes">
-                <button class = "income_btn">Sign Up with DBS</button>
-                <button class = "income_btn">See Loan Recommendations</button>
+                <button id="signup" class = "income_btn">Sign Up with DBS</button>
+                <button id="seeloan" class = "income_btn">See Loan Recommendations</button>
                 </div>
             </span>
         </div>
@@ -128,12 +128,11 @@
 </main>
 
 <script>
-    document.getElementById('childPlanningButton').addEventListener('click', () => {
-        let input = document.getElementById('incomePerAnnum')
-        console.log(`input=${input.value}`)
+    document.getElementById('signup').addEventListener('click', () => {
+        window.location = "https://internet-banking.dbs.com.sg/ibAPL/Welcome";
     });
-    document.getElementById('homeLoansButton').addEventListener('click', () => {
-        window.location = "home_loans.html";
+    document.getElementById('seeloan').addEventListener('click', () => {
+        window.location = "https://internet-banking.dbs.com.sg/DBSObWeb/processpweb.htm?pid=sg-dbs-pweb-promopersonal-loans-ntuc-vouchers-btnapplyonlinenow";
     });
 </script>
 </body>
