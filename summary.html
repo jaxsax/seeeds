@@ -87,7 +87,7 @@
                 <table style="border:2px solid black; background-color:aliceblue; width:75%;">
                     <tr>
                         <td colspan="4">
-                            <!--Pie Chart here-->
+                            <center><div id="piechart"></div></center>
                         </td>
                     </tr>
                     <tr>
@@ -127,7 +127,34 @@
     </div>
 </main>
 
-<script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                
+<script type="text/javascript">
+
+
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Home Planner', 'Monthly'],
+  ['House Loan', 8],
+  ['Child Education', 2],
+  ['Child Food', 4],
+  ['Child Insurance', 4],
+  ['Spendings', 2],
+  ['Saving', 8]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'Home Planner', 'width':100, 'height':400};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+  }
     document.getElementById('signup').addEventListener('click', () => {
         window.location = "https://internet-banking.dbs.com.sg/ibAPL/Welcome";
     });
