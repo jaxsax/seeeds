@@ -4,9 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./base.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <title>Child Planning</title>
 
-    <link rel="stylesheet" href="semantic.css"/>
     <link rel="stylesheet" href="base.css"/>
 </head>
 <body>
@@ -27,7 +27,7 @@
     </ul>
 </nav>
 <main>
-    <div id="child_content" class="bg">
+    <div class="child_content" class="bg">
         <div class="child_form">
             <form action="" id="childForm" onsubmit="return false;">
                 <fieldset>
@@ -44,15 +44,22 @@
                 </fieldset>
             </form>
         </div>
-        <div id="child_expense">
+        <form id="childExpense" onsubmit="return false;" class="form-inline">
             <h2>The expected expense per month averaged over 20 years</h2>
-            <h3 id="insuranceExpense">Cost of Insurance Per Month:</h3>
-            <h3 id="schoolExpense">Cost of School Per Month: </h3>
-            <h3 id="foodExpense">Cost of Food Per Month:</h3>
-            <h3 id="totalExpenseKid">Total Cost Per Month:</h3>
-        </div>
+            Cost of Insurance Per Month:<input type="number" id="insuranceExpense" value="0"
+                                               onchange="logChildExpense()"> SGD <br>
+            Cost of School Per Month: <input type="number" id="schoolExpense" value="0"
+                                             onchange="logChildExpense()"> SGD <br>
+            Cost of Food Per Month:<input type="number" id="foodExpense" value="0" onchange="logChildExpense()">
+            SGD<br>
+            Total Cost Per Month:<input type="number" id="totalExpenseKid" value="0" onchange="logChildExpense()"> SGD
+            <br>
+        </form>
+        <h3 id="expectedExpenseOverIncome"></h3>
+        <div id="pieChartChild"></div>
+        <div id="pieChartChildIncomeTotal"></div>
     </div>
 </main>
-<main>
 </body>
+
 </html>
