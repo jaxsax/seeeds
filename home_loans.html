@@ -5,24 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Income</title>
 
+    <link rel="stylesheet" href="semantic.css" />
     <link rel="stylesheet" href="base.css" />
     <style>
-        .incomeContainer {
-            width: 60%;
-            margin: 0 auto;
+        .boxes {
+            margin-top: 12px;
         }
 
-        #incomePerAnnum {
-            width: 100%;
-        }
-
-        .boxes { margin-top: 12px; }
         .boxes button {
-            padding: 24px;
+            margin: 5px 20px;
+            padding: 8px 16px;
             text-transform: uppercase;
         }
+
+        .applicant {
+            margin-top: 1em;
+            background: red;
+        }
+
+        .f1 { margin-top: 1.5em; }
     </style>
 </head>
 
@@ -32,27 +35,96 @@
             <li>
                 <a href="specify_income.html">Income</a>
             </li>
-            <li>Child planning</li>
+            <li>
+                <a href="child_planning.html">Child Planning</a>
+            </li>
             <li>
                 <a href="home_loans.html">Home loans</a>
+            </li>
+            <li>
+                <a href="summary.html">Summary</a>
             </li>
         </ul>
     </nav>
     <main>
-        <form id="f">
-            <div>
-                FFFFFFFFFFFFFF: <span id="abc"></span>
+        <div id="content">
+            <div class="content ui one column grid container">
+                <div class="column ui raised very padded text container segment f1">
+                    <h1 class="ui header">You</h1>
+                    <form action="#" class="ui form">
+                        <div class="field">
+                            <label>Fixed monthly income *</label>
+                            <input type="text" name="fixed-income-monthly-you" id="fixed-income-monthly-you"
+                                placeholder="$ 1000">
+                        </div>
+                        <div class="field">
+                            <label>Other monthly income</label>
+                            <input type="text" name="other-income-monthly-you" id="other-income-monthly-you"
+                                placeholder="$ 1000">
+                        </div>
+                        <div class="field">
+                            <label>Date of birth</label>
+                            <input type="date" name="dob-you" id="dob-you" />
+                        </div>
+                        <div class="field">
+                            <div class="ui checkbox">
+
+                                <input type="checkbox" name="main-applicant-you" id="main-applicant-you">
+                                <label>Main applicant</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="column ui raised very padded text container segment">
+                    <h1 class="ui header">Spouse</h1>
+                    <form action="#" class="ui form">
+                        <div class="field">
+                            <label>Fixed monthly income *</label>
+                            <input type="text" id="fixed-income-monthly-spouse" name="fixed-income-monthly" placeholder="$ 1000">
+                        </div>
+                        <div class="field">
+                            <label>Other monthly income</label>
+                            <input type="text" name="other-income-monthly-spouse" id="other-income-monthly-spouse"
+                                placeholder="$ 1000">
+                        </div>
+                        <div class="field">
+                            <label>Date of birth</label>
+                            <input type="date" name="dob-spouse" id="dob-spouse" />
+                        </div>
+                        <div class="field">
+                            <div class="ui checkbox">
+
+                                <input type="checkbox" name="main-applicant-spouse" id="main-applicant-you">
+                                <label>Main applicant</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="column ui raised very padded text container segment">
+                    <h1 class="ui header">Housing information</h1>
+                    <form action="#" class="ui form">
+                        <div class="field">
+                            <label>Purchase price</label>
+                            <input type="number" name="housing-purchase-cost" id="housing-purchase-cost" />
+                        </div>
+                    </form>
+                </div>
+                <div class="column ui container center">
+                    <button class="ui button">Find suitable loans</button>
+                </div>
             </div>
-            <label for="costOfHome">
-                <span>Cost of home</span>
-                <input type="text" />
-            </label>
-        </form>
+        </div>
     </main>
+
     <script>
         let url = new URL(window.location);
-        let income = url.searchParams.get('income');
-        document.getElementById('abc').textContent = income;
+        let searchParams = url.searchParams;
+
+        let youFixedIncome = searchParams.get('you_income');
+        let spouseFixedIncome = searchParams.get('spouse_income');
+
+        document.getElementById('fixed-income-monthly-you').value = youFixedIncome;
+        document.getElementById('fixed-income-monthly-spouse').value = spouseFixedIncome;
     </script>
 </body>
 
