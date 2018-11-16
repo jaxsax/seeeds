@@ -117,11 +117,8 @@
     </main>
 
     <script>
-        let url = new URL(window.location);
-        let searchParams = url.searchParams;
-
-        let youFixedIncome = searchParams.get('you_income');
-        let spouseFixedIncome = searchParams.get('spouse_income');
+        let youFixedIncome = localStorage.getItem('youIncome');
+        let spouseFixedIncome = localStorage.getItem('spouseIncome');
 
         document.getElementById('fixed-income-monthly-you').value = youFixedIncome;
         document.getElementById('fixed-income-monthly-spouse').value = spouseFixedIncome;
