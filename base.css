@@ -49,6 +49,16 @@ main {
     min-height: 88vh;
 }
 
+center-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px
+}
+
+
 .income_btn {
     display: inline-block;
     margin: 5px 20px;
